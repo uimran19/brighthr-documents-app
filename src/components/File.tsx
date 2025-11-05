@@ -1,10 +1,15 @@
 import { type FileType } from "../data/data"
 
+type FileProps = {
+    file: FileType
+}
 
-
-export default function File() {
-
+export default function File({file}: FileProps) {
+    
     return (
-        <p>hi</p>
+        <div>
+            <p>{file.name}</p>
+            <p>{file.added}</p>
+        </div>
     )
 }
