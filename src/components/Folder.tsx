@@ -10,7 +10,7 @@ export default function Folder({folder}: FolderProps) {
     return (
         
         <div className="flex justify-center items-center">
-            <Link className='inline-block p-7 border-2 border-white hover:border-blue-500 rounded-full' to={`/${folder.name}`} title={`click to enter ${folder.name} folder`}>
+            <Link className='inline-block p-7 border-2 border-white hover:border-blue-500 rounded-full hover:text-[#1a71c2]' to={`/${folder.name}`} title={`click to enter ${folder.name} folder`}>
                 <FaFolder className="text-7xl text-[#1a71c2]"/>
                 <p>{folder.name}</p>
             </Link>
