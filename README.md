@@ -15,11 +15,11 @@ npm install
 
 ## Testing
 
-For unit testing, React Testing Library and (jest or vitest) was used.
+For unit testing, React Testing Library and Vitest was used.
 
 To run the tests, input the following command:
 
-`placeholder text`
+`npm run test`
 
 ## Description
 
