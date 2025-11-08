@@ -30,7 +30,7 @@ export default function FolderPage() {
     )
     
     return (
-        <main className="h-screen grid grid-cols-2 justify-items-center p-8">
+        <main className="grow grid grid-cols-2 justify-items-center p-8">
             {items.map(item => {
                 if (item.type === 'folder') return <Folder key={item.name} folder={item} />
 

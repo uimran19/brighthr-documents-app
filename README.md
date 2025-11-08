@@ -9,7 +9,7 @@
 2. cd into the folder and install dependencies
 
 ```bash
-cd brighthr-document-app
+cd brighthr-documents-app
 npm install
 ```
 
