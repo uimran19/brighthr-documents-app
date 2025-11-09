@@ -3,6 +3,7 @@ import { createContext, useState, type ReactNode } from "react";
 type AppContext = {
     filterQuery: string,
     setFilterQuery: (newFilterQuery: string) => void,
+    setSort: (newSort: string) => void,
     sort: string,
     ascending: boolean
 }
@@ -10,6 +11,7 @@ type AppContext = {
 export const appContext = createContext<AppContext>({
     filterQuery: "",
     setFilterQuery() {},
+    setSort() {},
     sort: "name",
     ascending: false
 })
@@ -23,6 +25,7 @@ export function AppContextProvider({children}: {children: ReactNode}) {
     const ctx: AppContext = {
         filterQuery,
         setFilterQuery,
+        setSort,
         sort,
         ascending
     }

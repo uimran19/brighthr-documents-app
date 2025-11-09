@@ -1,13 +1,20 @@
 import { Route, Routes } from "react-router-dom"
 import FolderPage from "./pages/FolderPage"
 import FilterInput from "./components/FilterInput"
+import Sorting from "./components/Sorting"
 
 function App() {
 
   return (
     <>
-      <header className="bg-gray-200 flex justify-center p-6">
-        <FilterInput />
+      <header className="bg-gray-200 grid grid-cols-3 p-6">
+        <div></div>
+        <div className="text-center">
+          <FilterInput />
+        </div>
+        <div className="text-right mr-30">
+          <Sorting />
+        </div>
       </header>
       <Routes>
         <Route path="/" element={<FolderPage/>} />

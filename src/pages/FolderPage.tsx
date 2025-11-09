@@ -4,6 +4,7 @@ import Folder from "../components/Folder"
 import File from "../components/File"
 import { appContext } from "../context/context"
 import { useContext } from "react"
+import { Link } from "react-router-dom"
 /*
         /               rootDir
         /Misc           Misc
@@ -40,13 +41,28 @@ export default function FolderPage() {
         <p>No matches found</p>
     )
     
+    items.sort((a,b) => {
+        if (ctx.sort === 'name') {
+            return a.name.localeCompare(b.name)
+        }
+        else {
+            if (a.type === 'folder' || b.type === 'folder') return -1;
+            const dateA = new Date(a.added).getTime()
+            const dateB = new Date(b.added).getTime()
+            return dateB - dateA
+        }
+    })
+    
     return (
-        <main className="grow grid grid-cols-2 justify-items-center p-8">
-            {items.map(item => {
-                if (item.type === 'folder') return <Folder key={item.name} folder={item} />
+        <>
+            <main className="grow grid grid-cols-2 justify-items-center p-8">
+                {items.map(item => {
+                    if (item.type === 'folder') return <Folder key={item.name} folder={item} />
 
-                return <File key={item.name} file={item} />
-            })}
-        </main>
+                    return <File key={item.name} file={item} />
+                })}
+            </main>
+            {params.folderName && <Link className="border mb-30 self-center p-3 rounded-lg cursor-pointer" to='/'>Back</Link>}
+        </>
     )
 }
