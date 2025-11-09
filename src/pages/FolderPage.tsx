@@ -62,7 +62,7 @@ export default function FolderPage() {
                     return <File key={item.name} file={item} />
                 })}
             </main>
-            {params.folderName && <Link className="border mb-30 self-center p-3 rounded-lg cursor-pointer" to='/'>Back</Link>}
+            {params.folderName && <Link className="text-white border mb-30 self-center p-3 rounded-lg bg-[#4cabf7] hover:bg-[#3579ad] cursor-pointer" to='/'>Back</Link>}
         </>
     )
 }
