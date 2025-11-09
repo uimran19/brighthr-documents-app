@@ -22,7 +22,7 @@ export default function File({file}: FileProps) {
     
     return (
         <div className="flex justify-center items-center">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center" title={`${file.type} file`}>
                 <Icon className="text-6xl"/>
                 <p>{file.name}</p>
                 <p>{file.added}</p>
