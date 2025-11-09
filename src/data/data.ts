@@ -10,6 +10,17 @@ export type FolderType = {
     files: FileType[]
 }
 
+export function getAllFiles() {
+    const files: FileType[] = []
+    for (const item of rootDir) {
+        if (item.type !== 'folder') files.push(item)
+        else {
+            files.push(...item.files)
+        }
+    }
+    return files
+}
+
 const rootDir: (FileType | FolderType)[] = [
     {
         "type": "pdf",

@@ -1,7 +1,9 @@
-import rootDir, { type FileType, type FolderType } from "../data/data"
+import rootDir, { type FileType, type FolderType, getAllFiles } from "../data/data"
 import { useParams } from "react-router-dom"
 import Folder from "../components/Folder"
 import File from "../components/File"
+import { appContext } from "../context/context"
+import { useContext } from "react"
 /*
         /               rootDir
         /Misc           Misc
@@ -12,9 +14,14 @@ import File from "../components/File"
 export default function FolderPage() {
 
     const params = useParams()
+    const ctx = useContext(appContext)
 
     let items: (FileType | FolderType)[] | null = rootDir // If we are on the home page
-    if (params.folderName) {
+    if (ctx.filterQuery) { // Filter all files for match
+        const files = getAllFiles()
+        items = files.filter((file)=> file.name.toLowerCase().startsWith(ctx.filterQuery.toLowerCase()))
+    }
+    else if (params.folderName) {
         const folder = rootDir.find(item => {
             return item.type === 'folder' && item.name.toLowerCase() === params.folderName?.toLowerCase()
         })
@@ -27,6 +34,10 @@ export default function FolderPage() {
 
     if (!items) return (
         <p>Invalid directory name</p>
+    )
+
+    if (items.length === 0) return (
+        <p>No matches found</p>
     )
     
     return (
